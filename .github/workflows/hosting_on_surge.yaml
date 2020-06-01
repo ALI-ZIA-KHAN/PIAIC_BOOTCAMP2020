@@ -1,26 +1,18 @@
-name: Bootcamp 2020 CI
+name: Deploy Website
 
-on:
-  push:
-    branches: [ master ]
-
+on: [push]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
+    name: Deploying to surge
     steps:
-    - uses: actions/checkout@v2
-    
-    - name: Installing Node module
-      uses: actions/setup-node@v2-beta
-      with:
-        node-version: 12  
-    
-    - name: Installing surge
-      run: npm install --global surge
-      
-    - name: deploying using surge
-      run:  surge ./  hopeforthebest.surge.sh --token $ {{ secrets.SECOND_TOKEN }}
-      
+      - uses: actions/checkout@v2
+      - name: Install Node.js
+        uses: actions/setup-node@v2-beta
+        with:
+          node-version: 12
+      - name: Install Surge
+        run: npm install -g surge
+      - name: Run surge
+        run: surge ./  hopeforthebest.surge.sh --token $ {{ secrets.SECOND_TOKEN }}
