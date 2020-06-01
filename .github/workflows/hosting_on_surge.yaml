@@ -28,4 +28,4 @@ jobs:
     - name: Install Surge
       run: npm install -g surge
     - name: Run Surge
-      run: surge ./ hopeforthebest.surge.sh --token $ {{ secrets.SECOND_TOKEN }}
+      run: surge ./ hopeforthebest.surge.sh --token ${{ secrets.SECOND_TOKEN}}
